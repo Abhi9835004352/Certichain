@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { PeraWalletConnect } from '@perawallet/connect';
+import { DeflyWalletConnect } from '@blockshake/defly-connect';
 import { useEffect } from 'react';
 import { WalletProvider } from './components/WalletContext';
 import Navbar from './components/Navbar';
@@ -9,11 +9,13 @@ import StudentDashboard from './pages/StudentDashboard';
 import Verify from './pages/Verify';
 import './index.css';
 
-export const peraWallet = new PeraWalletConnect();
+export const deflyWallet = new DeflyWalletConnect({
+  chainId: 416002  // TestNet
+});
 
 function App() {
   useEffect(() => {
-    peraWallet.reconnectSession().catch(() => {});
+    deflyWallet.reconnectSession().catch(() => {});
   }, []);
 
   return (

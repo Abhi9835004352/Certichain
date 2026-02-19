@@ -1,5 +1,5 @@
 import { useState, createContext, useContext, useEffect } from 'react';
-import { peraWallet } from '../App';
+import { deflyWallet } from '../App';
 
 const WalletContext = createContext(null);
 
@@ -11,7 +11,7 @@ export function WalletProvider({ children }) {
     const saved = sessionStorage.getItem('walletAddress');
     if (saved) setAccount(saved);
 
-    peraWallet.reconnectSession().then((accounts) => {
+    deflyWallet.reconnectSession().then((accounts) => {
       if (accounts.length) {
         setAccount(accounts[0]);
         sessionStorage.setItem('walletAddress', accounts[0]);
@@ -22,7 +22,7 @@ export function WalletProvider({ children }) {
   const connect = async () => {
     setConnecting(true);
     try {
-      const accounts = await peraWallet.connect();
+      const accounts = await deflyWallet.connect();
       setAccount(accounts[0]);
       sessionStorage.setItem('walletAddress', accounts[0]);
     } catch (err) {
@@ -32,13 +32,13 @@ export function WalletProvider({ children }) {
   };
 
   const disconnect = () => {
-    peraWallet.disconnect();
+    deflyWallet.disconnect();
     sessionStorage.removeItem('walletAddress');
     setAccount(null);
   };
 
   const signTransactions = async (txns) => {
-    return await peraWallet.signTransaction(txns);
+    return await deflyWallet.signTransaction(txns);
   };
 
   return (

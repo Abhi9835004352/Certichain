@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: certichain-frontend
+    buildCommand: npm install && npm run build
+    startCommand: serve -s build
+    envVars:
+      - key: REACT_APP_ALGOD_SERVER
+        scope: build
+      - key: REACT_APP_ALGOD_TOKEN
+        scope: build
+      - key: REACT_APP_INDEXER_SERVER
+        scope: build
+      - key: REACT_APP_APP_ID
+        scope: build
+      - key: REACT_APP_APP_ADDRESS
+        scope: build
+      - key: REACT_APP_PINATA_KEY
+        scope: build
+      - key: REACT_APP_PINATA_SECRET
+        scope: build

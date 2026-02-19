@@ -1,15 +1,6 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "build",
-  "env": {
-    "REACT_APP_ALGOD_SERVER": "@react_app_algod_server",
-    "REACT_APP_ALGOD_TOKEN": "@react_app_algod_token",
-    "REACT_APP_INDEXER_SERVER": "@react_app_indexer_server",
-    "REACT_APP_APP_ID": "@react_app_app_id",
-    "REACT_APP_APP_ADDRESS": "@react_app_app_address",
-    "REACT_APP_PINATA_KEY": "@react_app_pinata_key",
-    "REACT_APP_PINATA_SECRET": "@react_app_pinata_secret"
-  },
   "headers": [
     {
       "source": "/static/(.*)",
